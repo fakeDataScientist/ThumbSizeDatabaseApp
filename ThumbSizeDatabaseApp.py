@@ -3,7 +3,7 @@ db = sqlite3.connect("ThumbSize.db")
 # function to create a table
 def CreateTable():
     db.row_factory = sqlite3.Row
-    db.execute("create table if not exist Data(Name str, ThumbLength float, ThumbDiameter float)")
+    db.execute("create table if not exists Data(Name str, ThumbLength float, ThumbDiameter float)")
     db.commit()
 
 # function to record input data
