@@ -12,8 +12,14 @@ def AddValue(Name,ThumbLength,ThumbDiameter):
     db.execute("insert into Data(Name,ThumbLength,ThumbDiameter) values(?,?,?)", (Name,ThumbLength,ThumbDiameter))
     db.commit()
 
-# main function
+#function to print list from Data
+def ListData():
+    printdb= db.execute("select * from Data")
+    for row in printdb:
+        print("Name: {}, Thumb Length: {}, Thumb Diameter: {}".format(row["Name"],row["ThumbLength"],row["ThumbDiameter"]))
+
 def main():
+# main function
     CreateTable()
     inputdb = input("Do you want to add data? (yes/no):")
     while inputdb=="yes":
@@ -24,5 +30,6 @@ def main():
         print("Data has been added")
         inputdb = input("Do you want to add data again? (yes/no):")
     print("Thankyou, your data has been recorded")
+    ListData()
 #call main function
 if __name__ == '__main__': main()
